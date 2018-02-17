@@ -9,6 +9,7 @@ The interface between the app and the server is a simple http post with the foll
 The server url is kept in the companion app settings page
 
 This is an annotated screenshot of the app running
+
 ![Screenshot of app annotated](hr-streamer-screenshot.png "Annotated Screenshot")
 
 1. If the sad phone is visible it suggests a problem sending messages to the companion app
@@ -16,3 +17,5 @@ This is an annotated screenshot of the app running
 3. The current Time
 4. Heart rate
 5. Time the app has been running for
+
+Icons made by [Freepik]("http://www.freepik.com") from [www.flaticon.com]("https://www.flaticon.com/") is licensed by [CC 3.0 BY]("http://creativecommons.org/licenses/by/3.0/")
