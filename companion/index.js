@@ -3,14 +3,22 @@ import { settingsStorage } from "settings";
 
 let serverUrl = JSON.parse(settingsStorage.getItem("serverUrl"))['name'];
 
-console.log(typeof serverUrl);
 function sendHR(hr, timestamp) {
   console.log("Got HR: " + hr + " On " + timestamp);
   var url = serverUrl + "?hr=" + hr + "&timestamp=" + timestamp;
-  console.log(url)
-  fetch(url)
-  .catch(function (err) {
-    console.log("Error sending hr: " + err);
+  fetch(url).then(
+    function(result) {
+      messaging.peerSocket.send({
+        success: true
+      });
+    }
+  ).catch(function (err) {
+    console.log("Error sending hr: " + err + " to " + serverUrl);
+    if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+      messaging.peerSocket.send({
+        success: false
+      });
+    }
   });
 }
 

@@ -9,3 +9,19 @@
   text-anchor: middle;
   text-length: 99;
 }
+
+#myTimer {
+  fill: teal;
+  font-size: 32;
+  font-family: "System-Regular";
+  text-anchor: "middle";
+  text-length: "20";
+}
+
+#myClock {
+  fill: teal;
+  font-size: 32;
+  font-family: "System-Regular";
+  text-anchor: "middle";
+  text-length: "20";
+}
