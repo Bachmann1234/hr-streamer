@@ -5,8 +5,19 @@ let serverUrl = JSON.parse(settingsStorage.getItem("serverUrl"))['name'];
 
 function sendHR(hr, timestamp) {
   console.log("Got HR: " + hr + " On " + timestamp);
-  var url = serverUrl + "?hr=" + hr + "&timestamp=" + timestamp;
-  fetch(url).then(
+  fetch(
+    serverUrl, 
+    {
+      method: 'post',
+      body: JSON.stringify({
+        'hr': hr,
+        'timestamp': timestamp
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(
     function(result) {
       messaging.peerSocket.send({
         success: true

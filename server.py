@@ -1,9 +1,10 @@
 from flask import Flask, request
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def print_hr():
-    hr = request.args.get('hr', '')
-    timestamp = request.args.get('timestamp', '')
+    data = request.get_json();
+    hr = data.get('hr', "-1")
+    timestamp = data.get('timestamp', '-1')
     print("{} {}".format(hr, timestamp))
     return 'ok'
