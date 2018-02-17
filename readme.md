@@ -18,4 +18,4 @@ This is an annotated screenshot of the app running
 4. Heart rate
 5. Time the app has been running for
 
-Icons made by [Freepik]("http://www.freepik.com") from [www.flaticon.com]("https://www.flaticon.com/") is licensed by [CC 3.0 BY]("http://creativecommons.org/licenses/by/3.0/")
+Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
