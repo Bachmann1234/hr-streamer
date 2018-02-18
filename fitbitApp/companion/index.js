@@ -1,17 +1,28 @@
 import * as messaging from "messaging";
 import { settingsStorage } from "settings";
 
-let serverUrl = JSON.parse(settingsStorage.getItem("serverUrl"))['name'];
+let serverUrl = settingsStorage.getItem("serverUrl");
+let userId = settingsStorage.getItem("userId");
+
+if (userId != undefined) {
+  userId = JSON.parse(userId)['name']
+}
+
+if (serverUrl != undefined) {
+  serverUrl = JSON.parse(serverUrl)['name']
+}
+
+
 
 function sendHR(hr, timestamp) {
-  console.log("Got HR: " + hr + " On " + timestamp);
   fetch(
     serverUrl, 
     {
       method: 'post',
       body: JSON.stringify({
         'hr': hr,
-        'timestamp': timestamp
+        'timestamp': timestamp,
+        'userId': userId
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -39,6 +50,7 @@ messaging.peerSocket.onopen = function() {
 
 messaging.peerSocket.onmessage = function(evt) {
   if (evt.data) {
+    console.log("Got HR: " + evt.data.hr + " On " + evt.data.timestamp);
     sendHR(evt.data.hr, evt.data.timestamp);
   }
 }
@@ -48,6 +60,12 @@ messaging.peerSocket.onerror = function(err) {
 }
 
 settingsStorage.onchange = function(evt) {
-  serverUrl = JSON.parse(evt.newValue)['name'];
-  console.log("NEW URL: " + serverUrl);
+  console.log("key: " + evt.key)
+  if(evt.key === 'serverUrl') {
+    serverUrl = JSON.parse(evt.newValue)['name'];
+    console.log("New URL: " + serverUrl);
+  } else if(evt.key === 'userId') {
+    userId = JSON.parse(evt.newValue)['name'];
+    console.log("New User Id: " + userId);
+  }
 }
