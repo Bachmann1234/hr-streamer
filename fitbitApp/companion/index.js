@@ -6,10 +6,14 @@ let userId = settingsStorage.getItem("userId");
 
 if (userId != undefined) {
   userId = JSON.parse(userId)['name']
+} else {
+  userId = "";
 }
 
 if (serverUrl != undefined) {
   serverUrl = JSON.parse(serverUrl)['name']
+} else {
+  serverUrl = "";
 }
 
 
