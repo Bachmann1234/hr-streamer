@@ -18,6 +18,6 @@ This is an annotated screenshot of the app running
 4. Heart rate
 5. Time the app has been running for
 
-I use this app to stream my heart rate to my computer when I am biking and playing games I use the (Heart Rate Hud)[https://github.com/Bachmann1234/HeartRateHud] to do that.
+I use this app to stream my heart rate to my computer when I am biking and playing games I use the [Heart Rate Hud](https://github.com/Bachmann1234/HeartRateHud) to do that.
 
 Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
