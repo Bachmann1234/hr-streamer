@@ -9,17 +9,13 @@ let phoneErrorIcon = document.getElementById("phoneError");
 let serverErrorIcon = document.getElementById("serverError");
 let myClock = document.getElementById("myClock");
 let myTimer = document.getElementById("myTimer");
-let timerData = {
-  hours: 0,
-  minutes: 0,
-  seconds: 0
-}
+let appStart = new Date();
 
 clock.granularity = "seconds";
 
 clock.ontick = function(evt) {
   updateClock(evt);
-  incrementTimer();
+  updateTimer();
 };
 
 function updateClock(evt) {
@@ -30,19 +26,14 @@ function updateClock(evt) {
                       ("0" + evt.date.getSeconds()).slice(-2);
 }
 
-function incrementTimer() {
-  timerData.seconds++;
-  if (timerData.seconds >= 60) {
-    timerData.seconds -= 60;
-    timerData.minutes++;
-  }
-  if (timerData.minutes >= 60) {
-    timerData.minutes -= 60;
-    timerData.hours++;
-  }
-  myTimer.text = ("0" + timerData.hours).slice(-2) + ":" +
-                      ("0" + timerData.minutes).slice(-2) + ":" +
-                      ("0" + timerData.seconds).slice(-2);
+function updateTimer() {
+  let currTime = new Date();
+  let hours = (currTime.getHours() - appStart.getHours());
+  let minutes = (currTime.getMinutes() - appStart.getMinutes());
+  let seconds = (currTime.getSeconds() - appStart.getSeconds());
+  myTimer.text = ("0" + hours).slice(-2) + ":" +
+                      ("0" + minutes).slice(-2) + ":" +
+                      ("0" + seconds).slice(-2);
 }
 
 function setPhoneError() {
