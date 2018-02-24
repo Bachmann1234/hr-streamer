@@ -10,6 +10,9 @@ let serverErrorIcon = document.getElementById("serverError");
 let myClock = document.getElementById("myClock");
 let myTimer = document.getElementById("myTimer");
 let appStart = new Date();
+let MILLIS_TO_SECONDS = 1000;
+let MILLIS_TO_MINUTES = MILLIS_TO_SECONDS * 60;
+let MILLIS_TO_HOURS = MILLIS_TO_MINUTES * 60;
 
 clock.granularity = "seconds";
 
@@ -27,10 +30,10 @@ function updateClock(evt) {
 }
 
 function updateTimer() {
-  let currTime = new Date();
-  let hours = (currTime.getHours() - appStart.getHours());
-  let minutes = (currTime.getMinutes() - appStart.getMinutes());
-  let seconds = (currTime.getSeconds() - appStart.getSeconds());
+  let elapsedTime = new Date() - appStart;
+  let hours =  Math.floor(elapsedTime / MILLIS_TO_HOURS);
+  let minutes = Math.floor((elapsedTime % MILLIS_TO_HOURS) / MILLIS_TO_MINUTES);
+  let seconds = Math.floor((elapsedTime % MILLIS_TO_HOURS % MILLIS_TO_MINUTES) / MILLIS_TO_SECONDS);
   myTimer.text = ("0" + hours).slice(-2) + ":" +
                       ("0" + minutes).slice(-2) + ":" +
                       ("0" + seconds).slice(-2);
